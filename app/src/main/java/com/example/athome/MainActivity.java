@@ -16,8 +16,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 //public class MainActivity extends AppCompatActivity {
@@ -38,6 +36,7 @@ import android.widget.Toast;
     // Preference Values
     private String mTitleBarName = PREFERENCES_TitleBarName_DEFAULT_VALUE;
 
+    // Global Variable
     Toast mToast;
 
     @Override
@@ -61,7 +60,7 @@ import android.widget.Toast;
         restorePreferences();
 
         // Set the Toolbar Title
-        Toolbar mActionBarToolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar mActionBarToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mActionBarToolbar);
         getSupportActionBar().setTitle(mTitleBarName);
 
@@ -70,7 +69,7 @@ import android.widget.Toast;
 
         // display a request in progress message
         Context context = getApplicationContext();
-        mToast = Toast.makeText(context, "URL Earthquake Request in progress", Toast.LENGTH_LONG);
+        mToast = Toast.makeText(context, "URL Request in progress", Toast.LENGTH_LONG);
         mToast.show();
 
         }
@@ -107,8 +106,6 @@ import android.widget.Toast;
 
         // Restore preferences
         SharedPreferences sharedPrefs = getSharedPreferences(PREFERENCES_FILE_NAME, MODE_PRIVATE);
-
-        // Title Bar Name
         mTitleBarName = sharedPrefs.getString(PREFERENCES_TitleBarName_ID, PREFERENCES_TitleBarName_DEFAULT_VALUE);
     }
 
